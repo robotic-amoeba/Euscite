@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const userSchema = new Schema({
-  username: String,
-  password: String,
-  research: Array
+
+const researchSchema = new Schema({
+  name: String,
+  admin: String,
+  tag: [],
+  brach: Boolean,
+  post: Array
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -14,3 +17,4 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;
+
