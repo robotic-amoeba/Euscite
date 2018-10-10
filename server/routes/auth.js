@@ -45,7 +45,8 @@ router.post('/signup', (req, res, next) => {
 
     return new User({
       username,
-      password: hashPass
+      password: hashPass,
+      research: new Array
     }).save();
   })
   .then( savedUser => login(req, savedUser)) // Login the user using passport
@@ -72,7 +73,7 @@ router.get('/currentuser', (req,res,next) => {
   if(req.user){
     res.status(200).json(req.user);
   }else{
-    next(new Error('Not logged in'))
+    res.status(403).json({message: 'You are not logged in'})
   }
 })
 

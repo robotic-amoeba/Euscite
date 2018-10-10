@@ -20,7 +20,7 @@ class AuthService {
   }
 
   loggedin = () => {
-    return this.service.get('/currentUser',)
+    return this.service.get('/currentuser',)
     .then(response => response.data)
   }
 

@@ -7,7 +7,7 @@ const researchSchema = new Schema({
   admin: String,
   tag: [],
   brach: Boolean,
-  post: Array
+  entries: Array
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -15,6 +15,6 @@ const researchSchema = new Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const Research = mongoose.model('Research', researchSchema);
+module.exports = Research;
 
