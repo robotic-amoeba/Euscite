@@ -1,0 +1,11 @@
+.nav-style {
+  height: 70px;
+  width: 100vw;
+  background-color: #b4c7dc;
+  color: white;
+}
+
+ul {
+  margin:0;
+  padding-top: 20px;
+}

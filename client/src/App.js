@@ -66,7 +66,7 @@ class App extends Component {
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
             <Switch>
               <Route exact path='/' render={() => <Entries getUser={this.getTheUser} />} />
-
+              <Route exact path='/journal' render={() => <Entries getUser={this.getTheUser} />} />
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
             </Switch>
