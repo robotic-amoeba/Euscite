@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/AuthService';
-import './Navbar.css'
+import '../../styles/navigation.scss'
 
 class Navbar extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Navbar extends Component {
           <ul>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/journal'>Journal</Link></li>
-            <li><a onClick={this.handleLogout}>Logout</a></li>
+            <li><a href onClick={this.handleLogout}>Logout</a></li>
           </ul>
 
           <h2>Welcome, {this.state.loggedInUser.username}</h2>

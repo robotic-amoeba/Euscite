@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
 // import ProjectList from './components/projects/ProjectList';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navigation/Navbar';
 // import ProjectDetails from './components/projects/ProjectDetails';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
 import Entries from './components/home/Entries'
+import Footer from './components/navigation/Footer'
 
 class App extends Component {
 
@@ -56,6 +56,7 @@ class App extends Component {
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
             <Entries />
+            <Footer/>
           </header>
         </div>
       );
@@ -66,11 +67,12 @@ class App extends Component {
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
             <Switch>
               <Route exact path='/' render={() => <Entries getUser={this.getTheUser} />} />
-              <Route exact path='/journal' render={() => <Entries getUser={this.getTheUser} />} />
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
             </Switch>
           </header>
+              <Route exact path='/journal' render={() => <Entries getUser={this.getTheUser} />} />
+            <Footer/>
         </div>
       );
     }

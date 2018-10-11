@@ -1,0 +1,62 @@
+@import 'variables.scss'; 
+
+@mixin testDarken ($color) {
+  background-color: $color;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: darken($color, 10);
+  }
+}
+
+/* .test1 {
+  @include testDarken(#ff0000);
+} */
+
+
+.nav-style {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  height: $navbarHeight;
+  width: 100vw;
+  @include testDarken($navColor);
+
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    li {
+      margin-right: 20px;
+      text-decoration: none;      
+    }
+    a {
+      font-size: $navTextSize;
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+}
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+  width: 100vw;
+  background-color: $navColor;
+  span {
+    margin: 0 20px;
+    color: white;
+  }
+  .linksNavbar {
+    margin: 20px 0 0 30px;
+    font-size: $secondaryTitle;
+    a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
