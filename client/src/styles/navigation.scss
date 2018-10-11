@@ -28,13 +28,19 @@
     list-style: none;
     justify-content: center;
     li {
-      margin-right: 20px;
+      margin-left: 20px;
       text-decoration: none;      
     }
     a {
       font-size: $navTextSize;
       color: white;
       text-decoration: none;
+    }
+    span {
+      @extend li, a;
+      font-size: $secondaryTitle;
+      padding:10px;
+      margin-left: 50px;
     }
   }
 
@@ -51,9 +57,10 @@
     color: white;
   }
   .linksNavbar {
-    margin: 20px 0 0 30px;
+    margin: 20px 60px;
     font-size: $secondaryTitle;
     a {
+      margin-left: 20px;
       color: white;
       text-decoration: none;
       cursor: pointer;

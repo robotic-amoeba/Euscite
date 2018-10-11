@@ -7,9 +7,13 @@ function Footer(props) {
   return (
     <footer className="page-footer">
       <div className="linksNavbar">
-        <a><Link to='/about'>About</Link></a>
+        <a href="#"><Link to='/about'>About</Link></a>
         <span>|</span>
-        <a>Share on: Facebook, Twitter, Instagram</a>
+        <a href="#">Facebook</a>
+        <span>|</span>
+        <a href="#">Twitter</a>
+        <span>|</span>
+        <a href="#">Instagram</a>
       </div>
     </footer>
   )

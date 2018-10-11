@@ -55,9 +55,12 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            <Entries />
-            <Footer/>
           </header>
+            <Switch>
+              <Route exact path='/' render={() => <Entries />} />
+              <Route exact path='/journal' render={(props) => <Entries loggedInUser={this.state.loggedInUser} />} />
+            </Switch>
+            <Footer />
         </div>
       );
     } else { //USER NOT LOGGED IN ----------------
@@ -65,14 +68,13 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+          </header>
             <Switch>
-              <Route exact path='/' render={() => <Entries getUser={this.getTheUser} />} />
+              <Route exact path='/' render={() => <Entries loggedInUser={false}/>} />
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
             </Switch>
-          </header>
-              <Route exact path='/journal' render={() => <Entries getUser={this.getTheUser} />} />
-            <Footer/>
+          <Footer />
         </div>
       );
     }
