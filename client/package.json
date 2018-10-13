@@ -1,5 +1,5 @@
 {
-  "name": "react-login",
+  "name": "front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,8 +8,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.4",
-    "sass-loader": "^7.1.0"
+    "react-scripts": "2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
