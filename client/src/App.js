@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-
-// import ProjectList from './components/projects/ProjectList';
+ 
+// Navigation components
 import Navbar from './components/navigation/Navbar';
-// import ProjectDetails from './components/projects/ProjectDetails';
-import Signup from './components/auth/Signup';
-import Login from './components/auth/Login';
-import AuthService from './components/auth/AuthService';
-import Entries from './components/home/Entries'
 import Footer from './components/navigation/Footer'
+// Login components
+import Signup from './components/auth/Signup';
+import AuthService from './components/auth/AuthService';
+import Login from './components/auth/Login';
+// Menu components
+import Home from './components/home/Home'
+import Journal from './components/home/Journal'
+
 
 class App extends Component {
 
@@ -33,6 +36,7 @@ class App extends Component {
 
   fetchUser() {
     if (this.state.loggedInUser === null) {
+
       this.service.loggedin()
         .then(response => {
           this.setState({
@@ -57,8 +61,8 @@ class App extends Component {
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
           </header>
             <Switch>
-              <Route exact path='/' render={() => <Entries />} />
-              <Route exact path='/journal' render={(props) => <Entries loggedInUser={this.state.loggedInUser} />} />
+              <Route exact path='/' render={() => <Home />} />
+              <Route exact path='/journal' render={() => <Journal loggedInUser={this.state.loggedInUser} />} />
             </Switch>
             <Footer />
         </div>
@@ -70,7 +74,7 @@ class App extends Component {
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
           </header>
             <Switch>
-              <Route exact path='/' render={() => <Entries loggedInUser={false}/>} />
+              <Route exact path='/' render={() => <Home loggedInUser={false}/>} />
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
             </Switch>

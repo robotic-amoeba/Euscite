@@ -9,10 +9,16 @@ class getPostsService {
   }
 
   getUserPosts = (username) => {
-    return this.service.post('/userentries', {username})
+    return this.service.get('/userentries', {username})
     .then((data)=>{
-      console.log(data);
       return data;
+    })
+  }
+
+  getRandomPosts = () => {
+    return this.service.get('/randomposts')
+    .then((data)=>{
+      return data
     })
   }
 }

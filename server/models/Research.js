@@ -5,7 +5,7 @@ const Schema   = mongoose.Schema;
 const researchSchema = new Schema({
   name: String,
   admin: String,
-  tag: [],
+  tags: [],
   brach: Boolean,
   entries: Array
 }, {

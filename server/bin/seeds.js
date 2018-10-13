@@ -54,7 +54,7 @@ let users = [
 
         name: "Eu ortophosphates as luminescent probes in biotechnology",
         admin: Raul._id,
-        tag: ["Chemistry", "Biotechnology"],
+        tags: ["Chemistry", "Biotechnology"],
         brach: false,
         entries: [
           {

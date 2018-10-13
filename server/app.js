@@ -85,8 +85,11 @@ app.locals.title = 'Express - Generated with IronGenerator';
 app.use('/api/user', genericCrud); */
 const authRouter = require('./routes/auth');
 const researchRouter = require('./routes/research');
+const error = require('./routes/error')
 app.use('/api/auth', authRouter);
-app.use('/api/research', researchRouter), 
+app.use('/api/research', researchRouter);
+app.use('/error', error)
+
 
 
 
