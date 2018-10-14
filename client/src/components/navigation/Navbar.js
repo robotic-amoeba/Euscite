@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/AuthService';
-import '../../styles/navigation.scss'
 
 class Navbar extends Component {
   constructor(props) {
@@ -40,7 +39,7 @@ class Navbar extends Component {
             <ul>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/login'>Login</Link></li>
-              <li><Link to='/signup'>Signup</Link></li>
+              <li><Link to='/signup'>Sign up</Link></li>
             </ul>
           </nav>
         </div>

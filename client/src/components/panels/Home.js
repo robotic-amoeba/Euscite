@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ListDisplay from './ListDisplay'
-import '../../styles/entries.scss'
 import getPostsService from './GetPostsService';
 
 class Home extends Component {
@@ -20,16 +19,13 @@ class Home extends Component {
     console.log("getRandomPosts call")
     this.service.getRandomPosts()
       .then((data) => {
-        this.setState({ posts: data })
+        this.setState({ posts: data.data })
       })
   }
 
   render() {
     return (
       <div className="entries-container">
-        <div>
-          ----HOME----
-        </div>
         <div>
           <ListDisplay displaying="home" posts={this.state.posts} />
         </div>

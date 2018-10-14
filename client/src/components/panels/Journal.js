@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ListDisplay from './ListDisplay'
-import '../../styles/entries.scss'
+import {Link} from 'react-router-dom';
+import ListDisplay from './ListDisplay';
 import getPostsService from './GetPostsService';
 
 class Journal extends Component {
@@ -15,13 +15,13 @@ class Journal extends Component {
     this.getUserPosts();
   }
 
-
+  //return all research lines with all user's posts inside
   getUserPosts = () => {
-    console.log("getUserPosts call")
+    console.log("getUserPosts call");
     this.service.getUserPosts()
       .then((data) => {
-        this.setState({ posts: data.data })
-        return data.data
+        this.setState({ posts: data.data });
+        return data.data;
       })
   }
 
@@ -29,9 +29,7 @@ class Journal extends Component {
     return (
       <div className="entries-container">
         <div>
-          ----JOURNAL----
-        </div>
-        <div>
+          <Link to="/newentry"><button>New Entry</button></Link>
           <ListDisplay displaying="journal" posts={this.state.posts} />
         </div>
       </div>
