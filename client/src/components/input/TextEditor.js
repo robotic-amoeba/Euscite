@@ -9,7 +9,6 @@ class TextEditor extends React.Component {
     super();
     this.state = { editorState: EditorState.createEmpty() };
     this.onChange = (editorState) => this.setState({ editorState });
-    console.log("hola")
   }
 
   
@@ -39,7 +38,8 @@ class TextEditor extends React.Component {
           }
           
           submitText() {
-            console.log(stateToHTML(this.state.editorState));
+            console.log(stateToHTML(this.state.editorState.getCurrentContent()))
+            
           }
 
     render() {
@@ -52,11 +52,11 @@ class TextEditor extends React.Component {
             />
           </div>
 
-          <div class="buttons-wrapper">
-            <button onClick={this._textBold.bind(this)}>Bold</button>
-            <button onClick={this._textItalic.bind(this)}>Italic</button>
-            <button onClick={this._textUnderlined.bind(this)}>Underline</button>
-            <button onClick={this._textCode.bind(this)}>Code</button>
+          <div className="buttons-wrapper">
+            <button onClick={this._textBold.bind(this)}><b>Bold</b></button>
+            <button onClick={this._textItalic.bind(this)}><i>Italic</i></button>
+            <button onClick={this._textUnderlined.bind(this)}><u>Underline</u></button>
+            <button onClick={this._textCode.bind(this)}><code>Code</code></button>
           </div>
           <button onClick={this.submitText.bind(this)}>Submit</button>
         </div>

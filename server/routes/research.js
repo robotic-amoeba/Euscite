@@ -22,7 +22,6 @@ router.get('/userentries', ensureLogin.ensureLoggedIn("/error/login"), (req, res
 })
 
 router.get('/randomposts', (req, res, next) => {
-  console.log(req.body)
   Research.find()
     .then((data) => res.status(200).json(data))
     .catch(e => next(e))

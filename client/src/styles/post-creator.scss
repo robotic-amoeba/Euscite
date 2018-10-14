@@ -13,8 +13,9 @@
 }
 
 .editor-wrapper {
-  width: 480px;
-  margin: 100px auto;
+  width: 60vw;
+  margin: 50px auto 100px auto;
+  padding: 10px;
   background-color: white;
   color: black;
   border-radius: 5px;
@@ -31,6 +32,7 @@
   padding: 12px;
   margin: 10px;
   border-radius: 5px;
+  text-align: left;
 }
 
 .buttons-wrapper {
@@ -41,4 +43,20 @@
     border-radius: 5px;
   }
   
+}
+
+.items-panel {
+  position: fixed;
+  top: 18vh;
+  left: 2vw;
+  display: flex;
+  flex-direction: column;
+  margin: 4vw 2vw;
+  background-color: gray;
+
+    button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+    }
 }

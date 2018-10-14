@@ -6,13 +6,13 @@ function Footer(props) {
   return (
     <footer className="page-footer">
       <div className="linksNavbar">
-        <a href="#"><Link to='/about'>About</Link></a>
+        <Link to='/about'>About</Link>
         <span>|</span>
-        <a href="#">Facebook</a>
+        <a href="/">Facebook</a>
         <span>|</span>
-        <a href="#">Twitter</a>
+        <a href="/">Twitter</a>
         <span>|</span>
-        <a href="#">Instagram</a>
+        <a href="/">Instagram</a>
       </div>
     </footer>
   )

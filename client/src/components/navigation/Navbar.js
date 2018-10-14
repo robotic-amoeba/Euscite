@@ -26,7 +26,7 @@ class Navbar extends Component {
           <ul>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/journal'>Journal</Link></li>
-            <li><a href onClick={this.handleLogout}>Logout</a></li>
+            <li><a href="/" onClick={this.handleLogout}>Logout</a></li>
             <span>Welcome, {this.state.loggedInUser.username}</span>
           </ul>
 
