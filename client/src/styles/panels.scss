@@ -3,11 +3,22 @@
 .entries-container {
   min-height: 650px;
   margin-top: $navbarHeight;
-  background-color: #282c34;
+  background-color: $backColor;
   color: white;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: top;
   align-items: center;
+}
+
+#new-entry-button {
+  padding: 15px 50px; 
+  border-radius: 5px;
+  margin: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: $lightBlue;
+  color: white;
+  font-size: $secondaryTitle;
 }

@@ -29,7 +29,7 @@ class Journal extends Component {
     return (
       <div className="entries-container">
         <div>
-          <Link to="/newentry"><button>New Entry</button></Link>
+          <Link to="/newentry"><button id="new-entry-button">New Entry</button></Link>
           <ListDisplay displaying="journal" posts={this.state.posts} />
         </div>
       </div>
