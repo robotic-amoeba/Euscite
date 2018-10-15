@@ -21,7 +21,7 @@
   display: block;
   height: $navbarHeight;
   width: 100vw;
-  @include testDarken($lightBlue);
+  @include testDarken($lightColor);
 
   ul {
     display: flex;
@@ -51,7 +51,7 @@
   bottom: 0;
   height: $footerHeight;
   width: 100vw;
-  background-color: $lightBlue;
+  background-color: $lightColor;
   span {
     margin: 0 20px;
     color: white;

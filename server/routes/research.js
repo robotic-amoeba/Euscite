@@ -27,4 +27,15 @@ router.get('/randomposts', (req, res, next) => {
     .catch(e => next(e))
 })
 
+router.post('/saveentry', (req, res, next)=>{
+  console.log(req.body)
+  const name = req.body.researchName
+  Research.findOne({name})
+  .then((data)=>{
+    console.log(data)
+    res.status(200).json(data)
+  })
+})
+
+
 module.exports = router;

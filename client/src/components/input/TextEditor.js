@@ -37,9 +37,8 @@ class TextEditor extends React.Component {
             ));
           }
           
-          submitText() {
-            console.log(stateToHTML(this.state.editorState.getCurrentContent()))
-            console.log(this.props.id)
+          submitText = () => {
+            this.props.saveText(stateToHTML(this.state.editorState.getCurrentContent()),this.props.id)
           }
 
     render() {
@@ -58,7 +57,7 @@ class TextEditor extends React.Component {
             <button onClick={this._textUnderlined.bind(this)}><u>Underline</u></button>
             <button onClick={this._textCode.bind(this)}><code>Code</code></button>
           </div>
-          <button onClick={this.submitText.bind(this)}>Submit</button>
+          <button onClick={this.submitText.bind(this)}>Finished</button>
         </div>
       );
     }

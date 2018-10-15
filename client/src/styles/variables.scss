@@ -1,5 +1,5 @@
-$lightBlue: #b4c7dc;
-$darkBlue: #7c93ac;
+$lightColor: #b4c7dc;
+$darkColor: #7c93ac;
 $backColor: #2e3e3f;
 
 $navbarHeight: 8vh;
@@ -9,3 +9,15 @@ $navTextSize: 30px;
 $secondaryTitle: 18px;
 
 $editorsWidth: 60vw;
+
+@mixin standarButton ($lightColor) {
+  background-color: $lightColor;
+  padding: 10px 5px;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: darken($lightColor, 10);
+  }
+}

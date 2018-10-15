@@ -21,6 +21,11 @@ class getPostsService {
       return data
     })
   }
+
+  saveEntryInResearch = (researchName, entry) => {
+    return this.service.post('/saveentry', {researchName, entry}) //research name is already in the entry
+    .then((data)=>console.log(data));
+  }
 }
 
 export default getPostsService;

@@ -13,7 +13,6 @@ function Graph(props) {
   } else {
     Chart = require("react-chartjs").Doughnut;
   }
-  console.log(props.data, props.data)
   const data = fromCSV_ToData(props.data); //y axis
   const labels = fromCSV_toLabels(props.labels); //x axis 
 
