@@ -49,7 +49,6 @@ function fromCSV_ToData(CSV) {
   const data = rawDataArray.map((string) => {
     return Number(string)
   })
-  console.log(data);
   return data
 }
 

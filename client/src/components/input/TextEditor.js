@@ -5,8 +5,8 @@ import { stateToHTML } from 'draft-js-export-html'
 
 
 class TextEditor extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { editorState: EditorState.createEmpty() };
     this.onChange = (editorState) => this.setState({ editorState });
   }
@@ -39,7 +39,7 @@ class TextEditor extends React.Component {
           
           submitText() {
             console.log(stateToHTML(this.state.editorState.getCurrentContent()))
-            
+            console.log(this.props.id)
           }
 
     render() {

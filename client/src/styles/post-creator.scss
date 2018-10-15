@@ -15,7 +15,7 @@
 
 .editor-wrapper {
   width: $editorsWidth;
-  margin: 50px auto 100px auto;
+  margin: 50px auto;
   padding: 10px;
   background-color: white;
   color: black;
@@ -31,7 +31,7 @@
 .editor {
   border: 1px solid grey;
   padding: 12px;
-  margin: 10px;
+  margin: 10px 0;
   border-radius: 5px;
   text-align: left;
 }
@@ -49,16 +49,25 @@
 .items-panel {
   position: fixed;
   top: 18vh;
-  left: 2vw;
+  left: 1vw;
   display: flex;
   flex-direction: column;
-  margin: 4vw 2vw;
   background-color: $darkBlue;
 
-    button {
+    .create-editor {
       padding: 10px;
       margin: 10px;
       border-radius: 5px;
+    }
+
+    .delete-editor{
+      margin: 5px;
+      padding: 3px 5px;
+      border-radius: 10px;
+      font-weight: 1000;
+      color: white;
+      background-color: rgb(161, 56, 56);
+      border: 2px solid rgb(90, 48, 48);
     }
 }
 
@@ -69,6 +78,7 @@
 
 .graph-options {
   background-color: $darkBlue;
+  border-radius: 5px;
   fieldset {
     border: none;
   }
