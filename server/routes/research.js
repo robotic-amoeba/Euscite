@@ -8,12 +8,12 @@ const ensureLogin = require("connect-ensure-login");
 
 router.get('/userentries', ensureLogin.ensureLoggedIn("/error/login"), (req, res, next) => {
   let user = req.user.username;
-  if(user){
-    User.findOne({username: user})
+  if (user) {
+    User.findOne({ username: user })
       .then((user) => {
         const researchs = user.research;
-        Research.find({_id: {$in: researchs}})
-        .then((data)=>res.status(200).json(data))
+        Research.find({ _id: { $in: researchs } })
+          .then((data) => res.status(200).json(data))
       })
       .catch(e => next(e))
   } else {
@@ -27,14 +27,16 @@ router.get('/randomposts', (req, res, next) => {
     .catch(e => next(e))
 })
 
-router.post('/saveentry', (req, res, next)=>{
-  console.log(req.body)
-  const name = req.body.researchName
-  Research.findOne({name})
-  .then((data)=>{
-    console.log(data)
-    res.status(200).json(data)
-  })
+router.post('/saveentry', (req, res, next) => {
+  console.log(req.body);
+  const name = req.body.researchName;
+  const entry = [];
+  entry.push(req.body.entry);
+  Research.findOneAndUpdate({ name }, { $push: { entries: { $each: entry, $position: 0 } } })
+    .then((data) => {
+      console.log(data)
+      res.status(200).json("Post saved!")
+    })
 })
 
 

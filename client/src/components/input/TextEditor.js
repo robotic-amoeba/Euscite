@@ -8,7 +8,10 @@ class TextEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = { editorState: EditorState.createEmpty() };
-    this.onChange = (editorState) => this.setState({ editorState });
+    this.onChange = (editorState) => {
+      this.setState({ editorState });
+      this.submitText()
+    }
   }
 
   
@@ -57,7 +60,6 @@ class TextEditor extends React.Component {
             <button onClick={this._textUnderlined.bind(this)}><u>Underline</u></button>
             <button onClick={this._textCode.bind(this)}><code>Code</code></button>
           </div>
-          <button onClick={this.submitText.bind(this)}>Finished</button>
         </div>
       );
     }
