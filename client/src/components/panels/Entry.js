@@ -5,15 +5,13 @@ const Entry = (props) => {
   return (
     <div>
       {props.rawData.map((block) => {
-        console.log(block)
-        if (Array.isArray(block)) {
-
+        if (block.type === "graph") {
           return (
-            <Graph type labels data/>
+           <Graph type={block.data[0]} labels={block.data[1]} data={block.data[2]} />
           )
         } else {
           return (
-            <div dangerouslySetInnerHTML={{ __html: block }} />)
+            <div dangerouslySetInnerHTML={{ __html: block.data }} />)
         }
       })}
     </div>
@@ -22,4 +20,4 @@ const Entry = (props) => {
 
 export default Entry;
 
-
+ 

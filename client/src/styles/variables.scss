@@ -1,6 +1,8 @@
 $lightColor: #b4c7dc;
 $darkColor: #7c93ac;
 $backColor: #2e3e3f;
+$ligtherBackColor: #3f5253;
+$titleBackColor: #243031;
 $acceptColor: rgba(87, 187, 104, 0.7);
 
 $navbarHeight: 8vh;
@@ -10,6 +12,7 @@ $navTextSize: 30px;
 $secondaryTitle: 18px;
 
 $editorsWidth: 60vw;
+$readersWidth: 80vw;
 
 @mixin standarButton ($lightColor) {
   color: white;

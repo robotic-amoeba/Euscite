@@ -1,5 +1,6 @@
 import React from 'react';
 import Entries from './Entries';
+import {Link} from 'react-router-dom';
 
 const ListDisplay = (props) => {
   if (props.posts) {
@@ -8,11 +9,16 @@ const ListDisplay = (props) => {
       <div>
         <div>Displaying: {props.displaying}</div>
         {researchArray.map((research) => {
+          console.log(research)
+          const date = research.updated_at.slice(0, 10);
           return (
             <div>
-              <h3>Research Line: {research.name}</h3>
-              <span>Tags: {research.tags}</span>
-              <h4>Last update: {research.updated_at}</h4>
+              <div className="research-block">
+                <h2>Research Line: {research.name}</h2>
+                <span>Field: {research.field}</span>
+                <h4>Last update: {date}</h4>
+                <Link to='/'><button onClick={()=>{props.branchThisResearch(research.name)}}>Branch this research</button></Link>
+              </div>
               <Entries key={research.name} entries={research.entries} />
             </div>
           )

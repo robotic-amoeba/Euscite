@@ -4,11 +4,11 @@ import Entry from './Entry'
 const Entries = (props) => {
 
   return (
-    <div>
+    <div className="entries-wrapper">
       {props.entries.map((entry, i) => {
         return (
           <div>
-            <h3>Entry name: {entry.name}</h3>
+            <h3 className="entry-name">Entry name: {entry.name}</h3>
             <Entry key={entry.name} rawData={entry.data} />
           </div>
         )

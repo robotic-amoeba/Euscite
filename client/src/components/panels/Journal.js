@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ListDisplay from './ListDisplay';
 import EntriesService from '../services/EntriesService';
 
@@ -24,13 +24,18 @@ class Journal extends Component {
       })
   }
 
+  createBranchOfResearch = (researchName) => {
+    console.log("triggered")
+    console.log(researchName)
+  }
+
   render() {
     return (
-      <div className="entries-container">
-        <div>
+      <div className="dark-background">
+        <div className="entries-container">
           <Link to="/newentry"><button id="new-entry-button">New Entry</button></Link>
           <Link to="/newresearch"><button id="new-entry-button">New Research</button></Link>
-          <ListDisplay displaying="journal" posts={this.state.posts} />
+          <ListDisplay displaying="journal" posts={this.state.posts} branchThisResearch={this.createBranchOfResearch}/>
         </div>
       </div>
     )

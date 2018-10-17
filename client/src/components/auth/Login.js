@@ -39,8 +39,9 @@ class Login extends Component {
 
   render() {
 
-    return (<div>
-      <h3>Please, login to our site</h3>
+    return (
+    <div className="dark-background">
+      <h3>Login</h3>
 
       <form onSubmit={this.handleFormSubmit}>
         <fieldset>
@@ -57,7 +58,8 @@ class Login extends Component {
       </form>
 
       <h1>{this.state.error ? 'Error' : ''}</h1>
-    </div>)
+    </div>
+    )
   }
 }
 

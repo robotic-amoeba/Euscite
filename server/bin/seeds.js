@@ -1,7 +1,5 @@
-// Seeds file that remove all users and create 2 new users
-
-// To execute this seed, run from the root of the project
-// $ node bin/seeds.js
+//SEED OUTDATED. 
+//Should be refactored acording to new models and new research and entries structure
 
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");

@@ -32,8 +32,8 @@ class Signup extends Component {
 
   render() {
     return(
-      <div>
-        <h3>Welcome!, create your account next:</h3>
+      <div className="dark-background">
+        <h3>Sign up to start publishing!</h3>
 
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>

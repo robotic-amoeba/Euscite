@@ -1,10 +1,18 @@
 @import 'variables.scss';
 
-.entries-container {
-  min-height: 650px;
+.dark-background {
+  min-height: 100vh - $navbarHeight - $footerHeight;
+  width: 99vw;
   margin-top: $navbarHeight;
+  margin-bottom: $footerHeight;
   background-color: $backColor;
   color: white;
+}
+
+.entries-container {
+  width: $readersWidth;
+  min-height: 100vh - $navbarHeight - $footerHeight;
+  margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -21,4 +29,24 @@
   background-color: $lightColor;
   color: white;
   font-size: $secondaryTitle;
+}
+
+.research-block {
+  background-color: $ligtherBackColor;
+  margin: 20px 0;
+  padding: 10px;
+  button {
+    border-radius: 5px;
+    cursor:pointer;
+  }
+}
+
+.entry-name {
+  background-color: $titleBackColor;
+  padding: 10px;
+  margin: 0 auto 20px auto;
+}
+
+.entries-wrapper {
+  border: solid 2px $titleBackColor;
 }
