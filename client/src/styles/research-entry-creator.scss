@@ -1,6 +1,6 @@
 @import 'variables';
 
-.newPost-container {
+.input-components-container {
   min-height: 100vh - $navbarHeight - $footerHeight;
   margin-top: $navbarHeight;
   margin-bottom: $footerHeight;
@@ -27,7 +27,7 @@
     margin: 10px;
   }
   button {
-    @include standarButton(rgba(87, 187, 104, 0.7));
+    @include standarButton($acceptColor);
     margin-left: 30px;
     display: block;
     margin: 0 auto;
@@ -118,5 +118,20 @@
     margin: 10px;
     padding: 10px 20px;
     border-radius: 5px;
+  }
+}
+.research-creator {
+
+  width: $editorsWidth;
+
+  button {
+    margin: 10px auto;
+    display: block;
+    @include standarButton($acceptColor);
+  }
+  input {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
   }
 }

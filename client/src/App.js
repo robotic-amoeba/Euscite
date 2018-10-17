@@ -11,8 +11,9 @@ import Login from './components/auth/Login';
 // Menu components
 import Home from './components/panels/Home'
 import Journal from './components/panels/Journal'
-//Entry editor
+//Editors
 import PostCreator from './components/input/PostCreator';
+import ResearchCreator from './components/input/ResearchCreator';
 
 
 class App extends Component {
@@ -66,6 +67,7 @@ class App extends Component {
             <Route exact path='/' render={() => <Home />} />
             <Route exact path='/journal' render={() => <Journal loggedInUser={this.state.loggedInUser} />} />
             <Route exact path='/newentry' render={() => <PostCreator />} />
+            <Route exact path='/newresearch' render={() => <ResearchCreator />} />
             </Switch>
             <Footer />
         </div>

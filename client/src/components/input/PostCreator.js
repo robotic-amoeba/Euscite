@@ -11,9 +11,7 @@ class PostCreator extends React.Component {
       researchs: [],
       selectedResearch: "",
       entryName: "",
-      editorsInPage: [],
-      savedTexts: [],
-      savedGraphs: []
+      editorsInPage: []
     }
     this.service = new getPostsService();
     this.getResearchs();
@@ -28,7 +26,6 @@ class PostCreator extends React.Component {
         })
         this.setState({ researchs: researchs })
       })
-
   }
 
   updateEntryName = (e) => {
@@ -37,8 +34,16 @@ class PostCreator extends React.Component {
 
   addEditor = (type) => {
     const editorsArray = this.state.editorsInPage
-    editorsArray.push(type);
-    this.setState({ editorsInPage: editorsArray })
+    let editor;
+    if (type==="text"){
+      editor = {type, data:""};
+    } else {
+      editor = {type, data:[]};
+    }
+    editorsArray.push(editor);
+    this.setState({ editorsInPage: editorsArray }, ()=>{
+      console.log("editor added to state. Editors in page:" + this.state.editorsInPage)
+    })
   }
 
   deleteEditor = (index) => {
@@ -47,45 +52,28 @@ class PostCreator extends React.Component {
     this.setState({ editorsInPage: diminishedArray });
   }
 
-  saveTextFromEditor = (text, id) => {
-    let newSavedTexts = this.state.savedTexts;
-    newSavedTexts.splice(id, 1, text);
-    this.setState({ savedTexts: newSavedTexts });
-  }
-
-  saveGraphFromEditor = (rawData, id) => {
-    let newSavedGraphs = this.state.savedGraphs;
-    newSavedGraphs.splice(id, 1, rawData);
-    this.setState({ savedGraphs: newSavedGraphs });
-    //console.log(this.state.savedGraphs);
+  storeContentFromEditor = (data, id) => {
+    const editors = this.state.editorsInPage;
+    const oldEditor = this.state.editorsInPage[id];
+    const newEditor = {type: oldEditor.type, data }
+    editors.splice(id, 1, newEditor)
+    this.setState({ editorsInPage: editors });
+    console.log(data) //<----- BUG HERE: lacks the last character written
   }
 
   sendPostToDB = () => {
     // DB format for entry == {name: , data:}
     if (!this.state.selectedResearch) {
-      alert("Select a research before saving your post :)")
-      return
+      alert("Select a research before saving your post :)");
+      return;
     } else if (!this.state.entryName) {
-      alert("Choose a name for your entry before submiting! :)")
+      alert("Choose a name for your entry before submiting! :)");
+      return;
     }
-    const rawDataToSend = [];
-    let textEditorCount = 0;
-    let graphEditorCount = 0;
-    this.state.editorsInPage.forEach((editor) => {
-      if (editor === "text") {
-        rawDataToSend.push(this.state.savedTexts[textEditorCount]);
-        console.log("Saved text: " +this.state.savedTexts[textEditorCount]);
-        textEditorCount += 1
-      } if (editor === "graph") {
-        rawDataToSend.push(this.state.savedGraphs[graphEditorCount]);
-        console.log("Saved graph: " + this.state.savedGraphs[graphEditorCount]);
-        graphEditorCount +=1;
-      }
-    })
-    const research = this.state.selectedResearch;
-    const entry = { name: this.state.entryName, data: rawDataToSend }
-    this.service.saveEntryInResearch(research, entry);
-    console.log(research, entry)
+    const name = this.state.selectedResearch;
+    const data = { name: this.state.entryName, data: this.state.editorsInPage }
+    this.service.saveEntryInResearch(name, data);
+    console.log(name, data)
   }
 
   render() {
@@ -93,7 +81,7 @@ class PostCreator extends React.Component {
     if (this.state.researchs) {
       return (
 
-        <div className="newPost-container">
+        <div className="input-components-container">
           <div className="creator-header">
             <h2>New Entry</h2>
             <fieldset>
@@ -113,10 +101,10 @@ class PostCreator extends React.Component {
             <button className="create-editor" onClick={() => { this.addEditor("graph") }}>New Graph Editor</button>
             <div>
               {
-                this.state.editorsInPage.map((editorType, index) => {
+                this.state.editorsInPage.map((editor, index) => {
                   return (
                     <div>
-                      <span>Editor {index + 1}: {editorType}</span>
+                      <span>Editor {index + 1}: {editor.type}</span>
                       <button className="delete-editor" onClick={() => { this.deleteEditor(index) }}>X</button>
                     </div>
                   )
@@ -127,14 +115,14 @@ class PostCreator extends React.Component {
 
           <div>
             {
-              this.state.editorsInPage.map((editorType, index) => {
-                if (editorType === "text") {
+              this.state.editorsInPage.map((editor, index) => {
+                if (editor.type === "text") {
                   return (
-                    <TextEditor saveText={this.saveTextFromEditor} id={index} key={index} />
+                    <TextEditor saveText={this.storeContentFromEditor} id={index} key={index} />
                   )
-                } else if (editorType === "graph") {
+                } else if (editor.type === "graph") {
                   return (
-                    <GraphEditor saveGraph={this.saveGraphFromEditor} id={index} key={index} />
+                    <GraphEditor saveGraph={this.storeContentFromEditor} id={index} key={index} />
                   );
                 }
               })

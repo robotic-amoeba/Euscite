@@ -30,6 +30,7 @@ class Journal extends Component {
       <div className="entries-container">
         <div>
           <Link to="/newentry"><button id="new-entry-button">New Entry</button></Link>
+          <Link to="/newresearch"><button id="new-entry-button">New Research</button></Link>
           <ListDisplay displaying="journal" posts={this.state.posts} />
         </div>
       </div>

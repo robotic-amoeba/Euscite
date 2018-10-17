@@ -1,14 +1,21 @@
 import React from 'react';
-import Entry from './Entry';
+import Entries from './Entries';
 
 const ListDisplay = (props) => {
-  if(props.posts) {
+  if (props.posts) {
     const researchArray = props.posts
     return (
       <div>
         <div>Displaying: {props.displaying}</div>
         {researchArray.map((research) => {
-          return <Entry key={research.name} name={research.name} tags={research.tags} />
+          return (
+            <div>
+              <h3>Research Line: {research.name}</h3>
+              <span>Tags: {research.tags}</span>
+              <h4>Last update: {research.updated_at}</h4>
+              <Entries key={research.name} entries={research.entries} />
+            </div>
+          )
         })}
       </div>
     )
@@ -17,7 +24,7 @@ const ListDisplay = (props) => {
     return (
       <div>
         <div>Displaying: {props.displaying}</div>
-        <div>Loading</div>
+        <h1>Loading...</h1>
       </div>
     )
   }

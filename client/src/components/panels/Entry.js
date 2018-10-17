@@ -1,17 +1,25 @@
 import React from 'react';
+import Graph from '../input/Graph'
 
 const Entry = (props) => {
-
   return (
     <div>
-      <h2>Research Line: {props.name}</h2>
-      <h2>Tags: {props.tags}</h2>
-      <h2>Last update: {props.updated_at}</h2>
-      <p>Last posts:</p>
+      {props.rawData.map((block) => {
+        console.log(block)
+        if (Array.isArray(block)) {
+
+          return (
+            <Graph type labels data/>
+          )
+        } else {
+          return (
+            <div dangerouslySetInnerHTML={{ __html: block }} />)
+        }
+      })}
     </div>
   )
-
 }
 
-
 export default Entry;
+
+
