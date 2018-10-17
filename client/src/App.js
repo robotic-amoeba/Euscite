@@ -5,8 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 import Navbar from './components/navigation/Navbar';
 import Footer from './components/navigation/Footer'
 // Login components
+import AuthService from './components/services/AuthService';
 import Signup from './components/auth/Signup';
-import AuthService from './components/auth/AuthService';
 import Login from './components/auth/Login';
 // Menu components
 import Home from './components/panels/Home'
@@ -21,7 +21,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = { loggedInUser: null };
-    this.service = new AuthService();
   }
 
   getTheUser = (userObj) => {
@@ -31,7 +30,7 @@ class App extends Component {
   }
 
   logout = () => {
-    this.service.logout()
+    AuthService.logout()
       .then(() => {
         this.setState({ loggedInUser: null });
       })
@@ -40,7 +39,7 @@ class App extends Component {
   fetchUser() {
     if (this.state.loggedInUser === null) {
 
-      this.service.loggedin()
+      AuthService.loggedin()
         .then(response => {
           this.setState({
             loggedInUser: response

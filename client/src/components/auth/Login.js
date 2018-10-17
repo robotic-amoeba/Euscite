@@ -1,13 +1,11 @@
 // auth/Signup.js
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import AuthService from './AuthService'
+import AuthService from '../services/AuthService'
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = { username: '', password: '' };
-    this.service = new AuthService();
   }
 
   handleFormSubmit = (event) => {
@@ -15,7 +13,7 @@ class Login extends Component {
     const username = this.state.username;
     const password = this.state.password;
 
-    this.service.login(username, password)
+    AuthService.login(username, password)
       .then(response => {
         this.setState({
           username: username,

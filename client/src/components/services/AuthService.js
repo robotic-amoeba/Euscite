@@ -1,7 +1,6 @@
-// auth/auth-service.js
 import axios from 'axios';
 
-class AuthService {
+class _AuthService {
   constructor() {
     this.service = axios.create({
       baseURL: 'http://localhost:3010/api/auth',
@@ -30,4 +29,5 @@ class AuthService {
   }
 }
 
+const AuthService = new _AuthService();
 export default AuthService;

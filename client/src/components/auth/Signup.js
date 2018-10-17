@@ -1,12 +1,11 @@
 // auth/Signup.js
 import React, { Component } from 'react';
-import AuthService from './AuthService'
+import AuthService from '../services/AuthService'
 
 class Signup extends Component {
   constructor(props){
     super(props);
     this.state = { username: '', password: '' };
-    this.service = new AuthService();
   }
     
   handleFormSubmit = (event) => {
@@ -14,7 +13,7 @@ class Signup extends Component {
     const username = this.state.username;
     const password = this.state.password;
 
-    this.service.signup(username, password)
+    AuthService.signup(username, password)
     .then( response => {
         this.setState({
             username: "", 

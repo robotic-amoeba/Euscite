@@ -1,11 +1,18 @@
 import axios from 'axios';
 
-class getPostsService {
+class _EntriesService {
   constructor() {
     this.service = axios.create({
       baseURL: 'http://localhost:3010/api/research',
       withCredentials: true
     });
+  }
+
+  createNewResearch = (researchName) => {
+    return this.service.post('/newresearch', {researchName})
+    .then((data)=>{
+      return data;
+    })
   }
 
   getUserPosts = (username) => {
@@ -28,4 +35,5 @@ class getPostsService {
   }
 }
 
-export default getPostsService;
+const EntriesService = new _EntriesService();
+export default EntriesService;

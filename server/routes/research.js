@@ -39,5 +39,9 @@ router.post('/saveentry', (req, res, next) => {
     })
 })
 
+router.post('/newresearch', (req, res, next) => {
+  res.status(200).json("New research added to user data")
+})
+
 
 module.exports = router;

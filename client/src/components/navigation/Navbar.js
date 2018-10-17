@@ -1,14 +1,11 @@
-// navbar/Navbar.js
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AuthService from '../auth/AuthService';
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = { loggedInUser: null };
-    this.service = new AuthService();
+    
   }
 
   componentWillReceiveProps(nextProps) {

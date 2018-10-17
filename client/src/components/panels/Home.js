@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListDisplay from './ListDisplay'
-import getPostsService from './GetPostsService';
+import EntriesService from '../services/EntriesService';
 
 class Home extends Component {
 
@@ -10,14 +10,13 @@ class Home extends Component {
       user: props.loggedInUser,
       posts: ""
     };
-    this.service = new getPostsService();
     this.getRandomPosts();
   }
 
 
   getRandomPosts = () => {
     console.log("getRandomPosts call")
-    this.service.getRandomPosts()
+    EntriesService.getRandomPosts()
       .then((data) => {
         this.setState({ posts: data.data })
       })

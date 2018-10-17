@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import ListDisplay from './ListDisplay';
-import getPostsService from './GetPostsService';
+import EntriesService from '../services/EntriesService';
 
 class Journal extends Component {
 
@@ -11,14 +11,13 @@ class Journal extends Component {
       user: props.loggedInUser,
       posts: ""
     };
-    this.service = new getPostsService();
     this.getUserPosts();
   }
 
   //return all research lines with all user's posts inside
   getUserPosts = () => {
     console.log("getUserPosts call");
-    this.service.getUserPosts()
+    EntriesService.getUserPosts()
       .then((data) => {
         this.setState({ posts: data.data });
         return data.data;

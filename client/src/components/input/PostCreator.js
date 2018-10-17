@@ -1,7 +1,7 @@
 import React from 'react';
 import TextEditor from './TextEditor';
 import GraphEditor from './GraphEditor';
-import getPostsService from '../panels/GetPostsService';
+import EntriesService from '../services/EntriesService';
 
 
 class PostCreator extends React.Component {
@@ -13,13 +13,13 @@ class PostCreator extends React.Component {
       entryName: "",
       editorsInPage: []
     }
-    this.service = new getPostsService();
+    
     this.getResearchs();
   }
 
   getResearchs = () => {
     const researchs = [];
-    this.service.getUserPosts()
+    EntriesService.getUserPosts()
       .then((data) => {
         data.data.forEach((research) => {
           researchs.push(research.name)
@@ -72,7 +72,7 @@ class PostCreator extends React.Component {
     }
     const name = this.state.selectedResearch;
     const data = { name: this.state.entryName, data: this.state.editorsInPage }
-    this.service.saveEntryInResearch(name, data);
+    EntriesService.saveEntryInResearch(name, data);
     console.log(name, data)
   }
 
@@ -125,6 +125,7 @@ class PostCreator extends React.Component {
                     <GraphEditor saveGraph={this.storeContentFromEditor} id={index} key={index} />
                   );
                 }
+                return null;
               })
             }
           </div>

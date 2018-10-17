@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EntriesService from '../services/EntriesService';
 
 class ResearchCreator extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class ResearchCreator extends Component {
   }
 
   createResearch = () => {
-    //DB conection
+    EntriesService.createNewResearch(this.state.researchName)
   }
 
   render() {
