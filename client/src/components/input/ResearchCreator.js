@@ -5,7 +5,8 @@ class ResearchCreator extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      researchName: ""
+      researchName: "",
+      field: ""
     }
   }
 
@@ -14,8 +15,19 @@ class ResearchCreator extends Component {
     this.setState({researchName: newValue})
   }
 
+  updateField = (e) => {
+    const newValue = e.target.value;
+    this.setState({field: newValue}, ()=>{
+      console.log(newValue)
+    })
+  }
+
   createResearch = () => {
-    EntriesService.createNewResearch(this.state.researchName)
+    if(!this.state.researchName) {
+      alert("Please, fill the name of your research! :)")
+      return
+    }
+    EntriesService.createNewResearch(this.state.researchName, this.state.field)
   }
 
   render() {
@@ -25,6 +37,8 @@ class ResearchCreator extends Component {
           <h2>New Research</h2>
           <label htmlFor="name">Name of the new research line:</label>
           <input id="name" type="text" onChange={(e)=>{this.updateResearchName(e)}}/>
+          <label htmlFor="tags">Field:</label>
+          <input id="name" type="text" onChange={(e)=>{this.updateField(e)}}/>
           <button onClick={()=>this.createResearch()}>Create Research</button>
         </fieldset>
       </div>

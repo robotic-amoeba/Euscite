@@ -8,9 +8,10 @@ class _EntriesService {
     });
   }
 
-  createNewResearch = (researchName) => {
-    return this.service.post('/newresearch', {researchName})
+  createNewResearch = (researchName, field) => {
+    return this.service.post('/newresearch', {researchName, field})
     .then((data)=>{
+      console.log(data)
       return data;
     })
   }

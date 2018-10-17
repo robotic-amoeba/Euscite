@@ -37,10 +37,39 @@ router.post('/saveentry', (req, res, next) => {
       console.log(data)
       res.status(200).json("Post saved!")
     })
+    .catch((error) => next(error))
 })
 
-router.post('/newresearch', (req, res, next) => {
-  res.status(200).json("New research added to user data")
+router.post('/newresearch', ensureLogin.ensureLoggedIn("/error/login"), (req, res, next) => {
+  const researchName = req.body.researchName;
+  const field = req.body.field
+  const username = req.user.username;
+  Research.findOne({ name: researchName })
+    .then((data) => {
+      if (data) {
+        res.status(200).json("That research already exists")
+        return;
+      } else {
+        User.findOne({ username })
+          .then((user) => {
+            return Research.create({
+              name: researchName,
+              admin: user._id,
+              field,
+              branch: false,
+              entries: []
+            })
+              .then((research) => {
+                const researchID = research._id;
+                User.findOneAndUpdate({ username }, { $push: {research: researchID}})
+                .then(()=>{
+                  res.status(200).json("New research created");
+                })
+              })
+              .catch((error) => next(error)) //is this well placed?
+          })
+      }
+    })
 })
 
 
