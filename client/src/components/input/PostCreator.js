@@ -11,9 +11,10 @@ class PostCreator extends React.Component {
       researchs: [],
       selectedResearch: "",
       entryName: "",
-      editorsInPage: []
+      editorsInPage: [],
+      menuDisplayed: true
     }
-    
+
     this.getResearchs();
   }
 
@@ -28,20 +29,24 @@ class PostCreator extends React.Component {
       })
   }
 
+  collapseMenu = () => {
+    this.setState({ menuDisplayed: !this.state.menuDisplayed })
+  }
+
   updateEntryName = (e) => {
-    this.setState({entryName:e.target.value})
+    this.setState({ entryName: e.target.value })
   }
 
   addEditor = (type) => {
     const editorsArray = this.state.editorsInPage
     let editor;
-    if (type==="text"){
-      editor = {type, data:""};
+    if (type === "text") {
+      editor = { type, data: "" };
     } else {
-      editor = {type, data:[]};
+      editor = { type, data: [] };
     }
     editorsArray.push(editor);
-    this.setState({ editorsInPage: editorsArray }, ()=>{
+    this.setState({ editorsInPage: editorsArray }, () => {
       console.log("editor added to state. Editors in page:" + this.state.editorsInPage)
     })
   }
@@ -55,7 +60,7 @@ class PostCreator extends React.Component {
   storeContentFromEditor = (data, id) => {
     const editors = this.state.editorsInPage;
     const oldEditor = this.state.editorsInPage[id];
-    const newEditor = {type: oldEditor.type, data }
+    const newEditor = { type: oldEditor.type, data }
     editors.splice(id, 1, newEditor)
     this.setState({ editorsInPage: editors });
     console.log(data) //<----- BUG HERE: lacks the last character written
@@ -84,17 +89,23 @@ class PostCreator extends React.Component {
         <div className="input-components-container">
           <div className="creator-header">
             <h2>New Entry</h2>
-            <fieldset>
-              <label htmlFor="entry-name">Title: </label>
-              <input id="entry-name" type="text" onChange={(e)=>this.updateEntryName(e)} />
-              <label htmlFor="research">Associated research: </label>
-              <select id="research" onChange={(e) => { this.setState({ selectedResearch: e.target.value }) }}>
-                <option value="" defaultValue>Select one--</option>
-                {this.state.researchs.map((research) => { return (<option value={research}>{research}</option>) })}
-              </select>
-              <button onClick={this.sendPostToDB}>Save and publish</button>
-            </fieldset>
+
+            {(this.state.menuDisplayed) ?
+
+              <fieldset>
+                <label htmlFor="entry-name">Title: </label>
+                <input id="entry-name" type="text" onChange={(e) => this.updateEntryName(e)} />
+                <label htmlFor="research">Associated research: </label>
+                <select id="research" onChange={(e) => { this.setState({ selectedResearch: e.target.value }) }}>
+                  <option value="" defaultValue>Select one--</option>
+                  {this.state.researchs.map((research) => { return (<option value={research}>{research}</option>) })}
+                </select>
+                <button onClick={this.sendPostToDB}>Save and publish</button>
+              </fieldset>
+
+              : <div className="menu-placeholder"><i>- entry menu -</i></div>}
           </div>
+            <button onClick={() => { this.collapseMenu() }} className="collapse-button">{'\u25BC'}</button>
 
           <div className="items-panel">
             <button className="create-editor" onClick={() => { this.addEditor("text") }}>New Text Editor</button>

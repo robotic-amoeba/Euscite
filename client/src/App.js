@@ -69,6 +69,7 @@ class App extends Component {
             <Route exact path='/newentry' render={() => <PostCreator />} />
             <Route exact path='/newresearch' render={() => <ResearchCreator />} />
             <Route exact path='/login' render={() => <Journal message="Welcome to your journal" loggedInUser={this.state.loggedInUser} />} />
+            <Route exact path='/signup' render={() => <Journal loggedInUser={this.state.loggedInUser} />} />
             </Switch>
             <Footer />
         </div>

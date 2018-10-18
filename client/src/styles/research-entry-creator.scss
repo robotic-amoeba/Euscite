@@ -14,7 +14,13 @@
 }
 
 .creator-header{
-  input{
+
+  fieldset {
+    background-color: $titleBackColor;
+    border: none;
+  }
+
+  input {
     display:block;
     width: $editorsWidth;
     padding: 8px;
@@ -37,6 +43,18 @@
     border-radius: 5px;
     margin-bottom: 10px;
   }
+}
+
+.collapse-button {
+  border-radius: 10px; 
+}
+
+.menu-placeholder {
+  width: $editorsWidth;
+  height: 40px;
+  background-color: #243031;
+  border-style: solid;
+  border: 2px $lightColor;
 }
 
 .editor-wrapper {
