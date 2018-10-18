@@ -3,7 +3,7 @@ import axios from 'axios';
 class _EntriesService {
   constructor() {
     this.service = axios.create({
-      baseURL: 'http://localhost:3010/api/research',
+      baseURL: process.env.REACT_APP_API_URL + '/research',
       withCredentials: true
     });
   }

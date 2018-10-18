@@ -1,6 +1,6 @@
 import React from 'react';
 import Entries from './Entries';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ListDisplay = (props) => {
   if (props.posts) {
@@ -16,9 +16,9 @@ const ListDisplay = (props) => {
                 <h2>Research Line: {research.name}</h2>
                 <span>Field: {research.field}</span>
                 <h4>Last update: {date}</h4>
-                {(props.displaying==="home") ?
-                <Link to='/journal'><button onClick={()=>{props.branchThisResearch(research.name, research.field)}}>Branch this research</button></Link> 
-                : null}
+                {(props.displaying === "home") ?
+                  <Link to='/journal'><button onClick={() => { props.branchThisResearch(research.name, research.field) }}>Branch this research</button></Link>
+                  : null}
               </div>
               <Entries key={research.name} entries={research.entries} />
             </div>
