@@ -50,3 +50,13 @@
 .entries-wrapper {
   border: solid 2px $titleBackColor;
 }
+
+.message {
+  color: $acceptColor;
+}
+
+.journal-message {
+  padding: 20px;
+  text-align: center;
+  font-size: $secondaryTitle;
+}

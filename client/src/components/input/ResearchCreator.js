@@ -2,47 +2,72 @@ import React, { Component } from 'react';
 import EntriesService from '../services/EntriesService';
 
 class ResearchCreator extends Component {
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.state = {
       researchName: "",
-      field: ""
+      field: "",
+      createdResearch: false
     }
   }
 
   updateResearchName = (e) => {
     const newValue = e.target.value;
-    this.setState({researchName: newValue})
+    this.setState({ researchName: newValue })
   }
 
   updateField = (e) => {
     const newValue = e.target.value;
-    this.setState({field: newValue}, ()=>{
+    this.setState({ field: newValue }, () => {
       console.log(newValue)
     })
   }
 
   createResearch = () => {
-    if(!this.state.researchName) {
+    if (!this.state.researchName) {
       alert("Please, fill the name of your research! :)")
       return
     }
     EntriesService.createNewResearch(this.state.researchName, this.state.field)
+    .then(()=>{
+      this.setState({
+        researchName: "",
+        field: "",
+        createdResearch: true
+      })
+    })
   }
 
   render() {
-    return (
+    return (<div>
+
+      {this.state.createdResearch ?
+
+<div className="input-components-container">
+        <fieldset className="research-creator">
+          <h2>New Research</h2>
+          <label htmlFor="name">Name of the new research line:</label>
+          <input id="name" type="text" onChange={(e) => { this.updateResearchName(e) }} />
+          <label htmlFor="tags">Field:</label>
+          <input id="name" type="text" onChange={(e) => { this.updateField(e) }} />
+          <button onClick={() => this.createResearch()}>Create Research</button>
+          <div className="message">Research created succesfully!</div>
+        </fieldset>
+      </div>
+
+      :
+
       <div className="input-components-container">
         <fieldset className="research-creator">
           <h2>New Research</h2>
           <label htmlFor="name">Name of the new research line:</label>
-          <input id="name" type="text" onChange={(e)=>{this.updateResearchName(e)}}/>
+          <input id="name" type="text" onChange={(e) => { this.updateResearchName(e) }} />
           <label htmlFor="tags">Field:</label>
-          <input id="name" type="text" onChange={(e)=>{this.updateField(e)}}/>
-          <button onClick={()=>this.createResearch()}>Create Research</button>
+          <input id="name" type="text" onChange={(e) => { this.updateField(e) }} />
+          <button onClick={() => this.createResearch()}>Create Research</button>
         </fieldset>
-      </div>
-    )
+      </div>}
+  </div>)
   }
 }
 

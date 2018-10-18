@@ -31,6 +31,7 @@ class Journal extends Component {
   render() {
     return (
       <div className="dark-background">
+      {(this.props.message) ? <div className="message journal-message">{this.props.message}</div>: null}
         <div className="entries-container">
           <Link to="/newentry"><button id="new-entry-button">New Entry</button></Link>
           <Link to="/newresearch"><button id="new-entry-button">New Research</button></Link>

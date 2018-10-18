@@ -7,7 +7,6 @@ const ListDisplay = (props) => {
     const researchArray = props.posts
     return (
       <div>
-        <div>Displaying: {props.displaying}</div>
         {researchArray.map((research) => {
           console.log(research)
           const date = research.updated_at.slice(0, 10);
@@ -17,7 +16,9 @@ const ListDisplay = (props) => {
                 <h2>Research Line: {research.name}</h2>
                 <span>Field: {research.field}</span>
                 <h4>Last update: {date}</h4>
-                <Link to='/'><button onClick={()=>{props.branchThisResearch(research.name, research.field)}}>Branch this research</button></Link>
+                {(props.displaying==="home") ?
+                <Link to='/journal'><button onClick={()=>{props.branchThisResearch(research.name, research.field)}}>Branch this research</button></Link> 
+                : null}
               </div>
               <Entries key={research.name} entries={research.entries} />
             </div>
