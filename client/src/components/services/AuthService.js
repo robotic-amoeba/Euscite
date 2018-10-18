@@ -19,6 +19,7 @@ class _AuthService {
   }
 
   loggedin = () => {
+    console.log( process.env.REACT_APP_API_URL)
     return this.service.get('/currentuser',)
     .then(response => response.data)
   }
