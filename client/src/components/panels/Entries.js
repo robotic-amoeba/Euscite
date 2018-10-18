@@ -7,7 +7,7 @@ const Entries = (props) => {
     <div className="entries-wrapper">
       {props.entries.map((entry, i) => {
         return (
-          <div>
+          <div key={i}>
             <h3 className="entry-name">Entry name: {entry.name}</h3>
             <Entry key={entry.name} rawData={entry.data} />
           </div>

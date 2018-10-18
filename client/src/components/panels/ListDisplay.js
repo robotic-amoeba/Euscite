@@ -7,11 +7,11 @@ const ListDisplay = (props) => {
     const researchArray = props.posts
     return (
       <div>
-        {researchArray.map((research) => {
+        {researchArray.map((research, i) => {
           console.log(research)
           const date = research.updated_at.slice(0, 10);
           return (
-            <div>
+            <div key={i}>
               <div className="research-block">
                 <h2>Research Line: {research.name}</h2>
                 <span>Field: {research.field}</span>

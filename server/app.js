@@ -72,7 +72,7 @@ require('./passport')(app);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 
@@ -89,6 +89,10 @@ const error = require('./routes/error')
 app.use('/api/auth', authRouter);
 app.use('/api/research', researchRouter);
 app.use('/error', error)
+
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 
 
