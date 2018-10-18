@@ -11,12 +11,11 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 
-const { DBURL } = process.env;
 mongoose.Promise = Promise;
 mongoose
-  .connect(DBURL)
+  .connect(process.env.DBURL)
   .then(() => {
-    console.log(`Connected to Mongo on ${DBURL}`)
+    console.log(`Connected to Mongo on ${process.env.DBURL}`)
   }).catch(err => {
     console.error('Error connecting to mongo', err)
   });
