@@ -14,6 +14,8 @@ import Journal from './components/panels/Journal'
 //Editors
 import PostCreator from './components/input/PostCreator';
 import ResearchCreator from './components/input/ResearchCreator';
+//resources
+import logo from './eusciteLogo.png'
 
 
 class App extends Component {
@@ -60,6 +62,7 @@ class App extends Component {
       return (
         <div className="App">
           <header className="App-header">
+            <img className="logo" src={logo} alt="euscite logo" />
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
           </header>
           <Switch>
@@ -70,26 +73,27 @@ class App extends Component {
             <Route exact path='/newresearch' render={() => <ResearchCreator />} />
             <Route exact path='/login' render={() => <Journal message="Welcome to your journal" loggedInUser={this.state.loggedInUser} />} />
             <Route exact path='/signup' render={() => <Journal loggedInUser={this.state.loggedInUser} />} />
-            </Switch>
-            <Footer />
+          </Switch>
+          <Footer />
         </div>
-          );
+      );
     } else { //USER NOT LOGGED IN ----------------
       return (
         <div className="App">
-            <header className="App-header">
-              <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            </header>
-            <Switch>
-              <Route exact path='/' render={() => <Home loggedInUser={false} />} />
-              <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
-              <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
-            </Switch>
-            <Footer />
-          </div>
-          );
-        }
-      }
+          <header className="App-header">
+            <img className="logo" src={logo} alt="euscite logo" />
+            <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+          </header>
+          <Switch>
+            <Route exact path='/' render={() => <Home loggedInUser={false} />} />
+            <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
+            <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
+          </Switch>
+          <Footer />
+        </div>
+      );
     }
-    
+  }
+}
+
 export default App;

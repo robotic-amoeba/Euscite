@@ -20,15 +20,27 @@
   align-items: center;
 }
 
-#new-entry-button {
-  padding: 15px 50px; 
+.buttons-wrapper-journal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 10px;
+  top: 80px;
+}
+
+#new-entry-button, #new-research-button {
+  padding: 15px 5px; 
   border-radius: 5px;
-  margin: 20px;
+  margin-bottom: 20px;
   font-weight: 700;
   cursor: pointer;
-  background-color: $lightColor;
+  background-color: $acceptColor;
   color: white;
-  font-size: $secondaryTitle;
+  font-size: $basicSize;
+}
+
+#new-entry-button {
+  padding: 13px 20px;
 }
 
 .research-block {
@@ -49,6 +61,7 @@
 
 .entries-wrapper {
   border: solid 2px $titleBackColor;
+  margin: 20px 0;
 }
 
 .message {

@@ -96,7 +96,7 @@
   left: 1vw;
   display: flex;
   flex-direction: column;
-  background-color: $darkColor;
+  background-color: $acceptColor;
 
     .create-editor {
       padding: 10px;
@@ -141,6 +141,8 @@
 .research-creator {
 
   width: $editorsWidth;
+  margin-top: 40px;
+  background-color: $titleBackColor;
 
   button {
     margin: 10px auto;
@@ -149,7 +151,9 @@
   }
   input {
     width: 50%;
-    margin: 0 auto;
+    margin: 10px auto;
     display: block;
+    border-radius: 5px;
+    padding: 5px
   }
 }

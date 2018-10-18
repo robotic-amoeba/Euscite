@@ -13,7 +13,15 @@
   @include testDarken(#ff0000);
 } */
 
+.logo {
+  width: 112px;
+  height: 50px;
+  position: fixed;
+  top:5px;
+  left: 25px;
+  z-index: 2;
 
+}
 .nav-style {
   position: fixed;
   top: 0;

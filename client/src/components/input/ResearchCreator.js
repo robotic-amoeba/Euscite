@@ -45,7 +45,7 @@ class ResearchCreator extends Component {
             <h2>New Research</h2>
             <label htmlFor="name">Name of the new research line:</label>
             <input id="name" type="text" onChange={(e) => { this.updateResearchName(e) }} />
-            <label htmlFor="tags">Field:</label>
+            <label htmlFor="tags">Field: (ex: Physics)</label>
             <input id="name" type="text" onChange={(e) => { this.updateField(e) }} />
             <button onClick={() => this.createResearch()}>Create Research</button>
             {(this.state.createdResearch ? <div className="message">Research created succesfully!</div> : null)}
