@@ -24,9 +24,8 @@ class Journal extends Component {
       })
   }
 
-  createBranchOfResearch = (researchName) => {
-    console.log("triggered")
-    console.log(researchName)
+  createBranchOfResearch = (researchName, field) => {
+    EntriesService.createBranchedResearch(researchName, field);
   }
 
   render() {

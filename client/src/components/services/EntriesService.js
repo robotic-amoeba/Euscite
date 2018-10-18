@@ -9,30 +9,38 @@ class _EntriesService {
   }
 
   createNewResearch = (researchName, field) => {
-    return this.service.post('/newresearch', {researchName, field})
-    .then((data)=>{
-      console.log(data)
-      return data;
-    })
+    return this.service.post('/newresearch', { researchName, field })
+      .then((data) => {
+        console.log(data)
+        return data;
+      })
   }
 
   getUserPosts = (username) => {
-    return this.service.get('/userentries', {username})
-    .then((data)=>{
-      return data;
-    })
+    return this.service.get('/userentries', { username })
+      .then((data) => {
+        return data;
+      })
   }
 
   getRandomPosts = () => {
     return this.service.get('/randomposts')
-    .then((data)=>{
-      return data
-    })
+      .then((data) => {
+        return data
+      })
   }
 
   saveEntryInResearch = (researchName, entry) => {
-    return this.service.post('/saveentry', {researchName, entry}) //research name is already in the entry
-    .then((data)=>console.log(data));
+    return this.service.post('/saveentry', { researchName, entry }) //research name is already in the entry
+      .then((data) => console.log(data));
+  }
+
+  createBranchedResearch = (researchName, field) => {
+    return this.service.post('/branchresearch', { researchName, field })
+      .then((data) => {
+        console.log(data)
+        return data;
+      })
   }
 }
 

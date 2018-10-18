@@ -17,7 +17,7 @@ const ListDisplay = (props) => {
                 <h2>Research Line: {research.name}</h2>
                 <span>Field: {research.field}</span>
                 <h4>Last update: {date}</h4>
-                <Link to='/'><button onClick={()=>{props.branchThisResearch(research.name)}}>Branch this research</button></Link>
+                <Link to='/'><button onClick={()=>{props.branchThisResearch(research.name, research.field)}}>Branch this research</button></Link>
               </div>
               <Entries key={research.name} entries={research.entries} />
             </div>

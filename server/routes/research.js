@@ -47,7 +47,7 @@ router.post('/newresearch', ensureLogin.ensureLoggedIn("/error/login"), (req, re
   Research.findOne({ name: researchName })
     .then((data) => {
       if (data) {
-        res.status(200).json("That research already exists")
+        res.status(409).json("That research already exists")
         return;
       } else {
         User.findOne({ username })
@@ -61,10 +61,42 @@ router.post('/newresearch', ensureLogin.ensureLoggedIn("/error/login"), (req, re
             })
               .then((research) => {
                 const researchID = research._id;
-                User.findOneAndUpdate({ username }, { $push: {research: researchID}})
-                .then(()=>{
-                  res.status(200).json("New research created");
-                })
+                User.findOneAndUpdate({ username }, { $push: { research: researchID } })
+                  .then(() => {
+                    res.status(200).json("New research created");
+                  })
+              })
+              .catch((error) => next(error)) //is this well placed?
+          })
+      }
+    })
+})
+
+router.post('/branchresearch', ensureLogin.ensureLoggedIn("/error/login"), (req, res, next) => {
+  const researchName = req.body.researchName;
+  const field = req.body.field;
+  const username = req.user.username;
+  const branchedResearchName = "//" + username + "//" + researchName;
+  Research.findOne({ name: branchedResearchName })
+    .then((data) => {
+      if (data) {
+        res.status(409).json("It seems that the branch already exists");
+      } else {
+        User.findOne({ username })
+          .then((user) => {
+            return Research.create({
+              name: branchedResearchName,
+              admin: user._id,
+              field,
+              branch: true,
+              entries: []
+            })
+              .then((research) => {
+                const researchID = research._id;
+                User.findOneAndUpdate({ username }, { $push: { research: researchID } })
+                  .then(() => {
+                    res.status(200).json("New research created");
+                  })
               })
               .catch((error) => next(error)) //is this well placed?
           })

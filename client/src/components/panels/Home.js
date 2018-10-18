@@ -13,11 +13,9 @@ class Home extends Component {
     this.getRandomPosts();
   }
 
-  createBranchOfResearch = (researchName) => {
-    console.log("triggered")
-    console.log(researchName)
+  createBranchOfResearch = (researchName, field) => {
+    EntriesService.createBranchedResearch(researchName, field);
   }
-
 
   getRandomPosts = () => {
     console.log("getRandomPosts call")
@@ -31,7 +29,7 @@ class Home extends Component {
     return (
       <div className="dark-background">
         <div className="entries-container">
-          <ListDisplay displaying="home" posts={this.state.posts} />
+          <ListDisplay displaying="home" posts={this.state.posts} branchThisResearch={this.createBranchOfResearch} />
         </div>
       </div>
     )
