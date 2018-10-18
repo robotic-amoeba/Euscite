@@ -90,7 +90,7 @@ app.use('/api/research', researchRouter);
 app.use('/error', error)
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 
