@@ -15,7 +15,7 @@ import Journal from './components/panels/Journal'
 import PostCreator from './components/input/PostCreator';
 import ResearchCreator from './components/input/ResearchCreator';
 //resources
-import logo from './eusciteLogo.png'
+import logo from './images/eusciteLogo.png'
 
 
 class App extends Component {

@@ -1,0 +1,40 @@
+@import 'variables.scss';
+
+.login-wrapper, .signup-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  border-radius: 10px;
+  margin-top: 50px;
+  font-size: 20px;
+  background-color: $titleBackColor;
+  fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  input {
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 200px;
+  }
+  h3 {
+    text-align: center;
+  }
+  label {
+    display: block;
+  }
+  #login-button, #signup-button {
+    width: 200px;
+    margin-top: 40px;
+    @include standarButton ($lightColor)
+  }
+}
+
+.log-sign-form {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}

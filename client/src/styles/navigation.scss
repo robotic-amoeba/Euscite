@@ -1,6 +1,6 @@
 @import 'variables.scss'; 
 
-@mixin testDarken ($color) {
+@mixin darken ($color) {
   background-color: $color;
   transition: background-color 0.5s ease;
 
@@ -9,9 +9,14 @@
   }
 }
 
-/* .test1 {
-  @include testDarken(#ff0000);
-} */
+@mixin lighten ($color) {
+  color: $color;
+  transition: color 0.5s ease;
+
+  &:hover {
+    color: lighten($color, 90);
+  }
+}
 
 .logo {
   width: 112px;
@@ -29,21 +34,25 @@
   display: block;
   height: $navbarHeight;
   width: 100vw;
-  @include testDarken($lightColor);
+  @include darken($lightColor);
 
   ul {
     display: flex;
     list-style: none;
     justify-content: center;
     li {
-      margin-left: 20px;
       text-decoration: none;      
     }
     a {
+      margin: 10px 20px;
+      $color: black;
+      font-weight: 700;
       font-size: $navTextSize;
-      color: white;
+      color: $color;
       text-decoration: none;
+      @include lighten($color);
     }
+    
     span {
       @extend li, a;
       font-size: $secondaryTitle;
@@ -67,11 +76,17 @@
   .linksNavbar {
     margin: 15px 60px;
     font-size: $secondaryTitle;
-    a {
-      margin-left: 20px;
-      color: white;
+    display: flex;
+
+    a { 
+      margin-left: 10px;
+      color:black;
       text-decoration: none;
       cursor: pointer;
     }
+    img {
+      width: 25px;
+      height: 25px;
+      }
   }
 }

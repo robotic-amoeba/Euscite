@@ -38,26 +38,27 @@ class Login extends Component {
   }
 
   render() {
-
     return (
     <div className="dark-background">
-      <h3>Login</h3>
-
-      <form onSubmit={this.handleFormSubmit}>
-        <fieldset>
-          <label>Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
-        </fieldset>
-
-        <fieldset>
-          <label>Password:</label>
-          <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
-        </fieldset>
-
-        <input type="submit" value="Login" />
-      </form>
-
-      <h1>{this.state.error ? 'Error' : ''}</h1>
+      <div class="login-wrapper">
+        <h3>Login</h3>
+  
+        <form className="log-sign-form" onSubmit={this.handleFormSubmit}>
+          <fieldset>
+            <label>Username:</label>
+            <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
+          </fieldset>
+  
+          <fieldset>
+            <label>Password:</label>
+            <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
+          </fieldset>
+  
+          <input id="login-button" type="submit" value="Login" />
+        </form>
+  
+        <h1>{this.state.error ? 'Error' : ''}</h1>
+      </div>
     </div>
     )
   }
