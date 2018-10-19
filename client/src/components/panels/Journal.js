@@ -33,7 +33,7 @@ class Journal extends Component {
       <div className="dark-background">
       {(this.props.message) ? <div className="message journal-message">{this.props.message}</div>: null}
         <div className="entries-container">
-          <div class="buttons-wrapper-journal">
+          <div className="buttons-wrapper-journal">
             <Link to="/newentry"><button id="new-entry-button">New Entry</button></Link>
             <Link to="/newresearch"><button id="new-research-button">New Research</button></Link>
           </div>

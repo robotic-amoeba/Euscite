@@ -12,7 +12,8 @@ class PostCreator extends React.Component {
       selectedResearch: "",
       entryName: "",
       editorsInPage: [],
-      menuDisplayed: true
+      menuDisplayed: true,
+      createdEntry: false
     }
 
     this.getResearchs();
@@ -77,8 +78,11 @@ class PostCreator extends React.Component {
     }
     const name = this.state.selectedResearch;
     const data = { name: this.state.entryName, data: this.state.editorsInPage }
-    EntriesService.saveEntryInResearch(name, data);
-    console.log(name, data)
+    EntriesService.saveEntryInResearch(name, data)
+      .then(() => {
+        this.setState({ createdEntry: true })
+        console.log(name, data)
+      })
   }
 
   render() {
@@ -98,14 +102,15 @@ class PostCreator extends React.Component {
                 <label htmlFor="research">Associated research: </label>
                 <select id="research" onChange={(e) => { this.setState({ selectedResearch: e.target.value }) }}>
                   <option value="" defaultValue>Select one--</option>
-                  {this.state.researchs.map((research) => { return (<option value={research}>{research}</option>) })}
+                  {this.state.researchs.map((research, i) => { return (<option key={i} value={research}>{research}</option>) })}
                 </select>
                 <button onClick={this.sendPostToDB}>Save and publish</button>
+                {(this.state.createdEntry ? <div className="message">Entry created succesfully!</div> : null)}
               </fieldset>
-
+           
               : <div className="menu-placeholder"><i>- entry menu -</i></div>}
           </div>
-            <button onClick={() => { this.collapseMenu() }} className="collapse-button">{'\u25BC'}</button>
+          <button onClick={() => { this.collapseMenu() }} className="collapse-button">{'\u25BC'}</button>
 
           <div className="items-panel">
             <button className="create-editor" onClick={() => { this.addEditor("text") }}>New Text Editor</button>
