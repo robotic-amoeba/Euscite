@@ -4,6 +4,10 @@
 @import 'research-entry-creator.scss';
 @import 'auth.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin:0;
   padding: 0;
