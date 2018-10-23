@@ -28,13 +28,12 @@ router.get('/randomposts', (req, res, next) => {
 })
 
 router.post('/saveentry', (req, res, next) => {
-  console.log(req.body);
+  
   const name = req.body.researchName;
   const entry = [];
   entry.push(req.body.entry);
   Research.findOneAndUpdate({ name }, { $push: { entries: { $each: entry, $position: 0 } } })
     .then((data) => {
-      console.log(data)
       res.status(200).json("Post saved!")
     })
     .catch((error) => next(error))
