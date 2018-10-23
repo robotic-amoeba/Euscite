@@ -11,7 +11,6 @@ class _EntriesService {
   createNewResearch = (researchName, field) => {
     return this.service.post('/newresearch', { researchName, field })
       .then((data) => {
-        console.log(data)
         return data;
       })
   }
@@ -31,14 +30,12 @@ class _EntriesService {
   }
 
   saveEntryInResearch = (researchName, entry) => {
-    return this.service.post('/saveentry', { researchName, entry }) //research name is already in the entry
-      .then((data) => console.log(data));
+    return this.service.post('/saveentry', { researchName, entry })
   }
 
   createBranchedResearch = (researchName, field) => {
     return this.service.post('/branchresearch', { researchName, field })
       .then((data) => {
-        console.log(data)
         return data;
       })
   }

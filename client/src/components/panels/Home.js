@@ -18,7 +18,6 @@ class Home extends Component {
   }
 
   getRandomPosts = () => {
-    console.log("getRandomPosts call")
     EntriesService.getRandomPosts()
       .then((data) => {
         this.setState({ posts: data.data })

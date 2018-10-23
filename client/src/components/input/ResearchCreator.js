@@ -18,9 +18,7 @@ class ResearchCreator extends Component {
 
   updateField = (e) => {
     const newValue = e.target.value;
-    this.setState({ field: newValue }, () => {
-      console.log(newValue)
-    })
+    this.setState({ field: newValue })
   }
 
   createResearch = () => {

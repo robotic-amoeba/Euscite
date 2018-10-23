@@ -8,7 +8,6 @@ const ListDisplay = (props) => {
     return (
       <div>
         {researchArray.map((research, i) => {
-          console.log(research)
           const date = research.updated_at.slice(0, 10);
           return (
             <div key={i}>

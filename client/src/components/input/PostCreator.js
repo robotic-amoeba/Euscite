@@ -47,9 +47,7 @@ class PostCreator extends React.Component {
       editor = { type, data: [] };
     }
     editorsArray.push(editor);
-    this.setState({ editorsInPage: editorsArray }, () => {
-      console.log("editor added to state. Editors in page:" + this.state.editorsInPage)
-    })
+    this.setState({ editorsInPage: editorsArray })
   }
 
   deleteEditor = (index) => {
@@ -64,7 +62,6 @@ class PostCreator extends React.Component {
     const newEditor = { type: oldEditor.type, data }
     editors.splice(id, 1, newEditor)
     this.setState({ editorsInPage: editors });
-    console.log(data) //<----- BUG HERE: lacks the last character written
   }
 
   sendPostToDB = () => {
@@ -81,7 +78,6 @@ class PostCreator extends React.Component {
     EntriesService.saveEntryInResearch(name, data)
       .then(() => {
         this.setState({ createdEntry: true })
-        console.log(name, data)
       })
   }
 

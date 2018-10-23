@@ -16,7 +16,6 @@ class Journal extends Component {
 
   //return all research lines with all user's posts inside
   getUserPosts = () => {
-    console.log("getUserPosts call");
     EntriesService.getUserPosts()
       .then((data) => {
         this.setState({ posts: data.data });
